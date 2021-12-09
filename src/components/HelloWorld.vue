@@ -129,6 +129,8 @@ input {
   width: auto;
   clear: both;
   background-color: #d8d8d8;
+
+  font-size: 1.25em;
 }
 
  .tr:nth-child(odd) {
@@ -136,10 +138,10 @@ input {
 }
 
  .tr.fading {
-  background-color: rgb(255, 113, 113);
+  background-color: rgb(255, 177, 177);
 }
   .tr.fading:nth-child(odd){
-  background-color: rgb(255, 142, 142);
+  background-color: rgb(255, 158, 158);
 }
 .td {
   display: table-cell;
