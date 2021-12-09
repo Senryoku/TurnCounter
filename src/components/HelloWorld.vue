@@ -13,11 +13,20 @@
       <button @click="endTurn">End Turn</button>
     </div>
     <div class="counters">
-      <table>
-        <tr v-for="counter in counters" :class="{fading: counter.count == 1}">
-          <td>{{counter.character}}</td><td>{{counter.effect}}</td><td>{{counter.count}}</td>
-        </tr>
-      </table>
+      <div class="table">
+        <div class="thead">
+          <div class="th">Character</div>
+          <div class="th">Effect</div>
+          <div class="th">Duration</div>
+        </div>
+        <transition-group name="list" class="tbody">
+          <div class="tr list-item" v-for="counter in counters" :key="counter.id" :class="{fading: counter.count == 1}">
+            <div class="td">{{counter.character}}</div>
+            <div class="td">{{counter.effect}}</div>
+            <div class="td">{{counter.count}}</div>
+          </div>
+        </transition-group>
+      </div>
     </div>
 </div>
 </template>
@@ -25,6 +34,7 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 interface Counter {
+  id: number;
   character: string,
   effect: string,
   count: number
@@ -36,16 +46,19 @@ export default defineComponent({
       counters: [] as Counter[],
       turnCount: 1,
       newCounter: {
+        id: 0,
         character: '',
         effect: '',
         count: 1
       },
+      lastId: 0,
     };
   },
   methods: {
     add() {
       this.counters.push(JSON.parse(JSON.stringify(this.newCounter)));
       this.newCounter = {
+        id: this.lastId++,
         character: '',
         effect: '',
         count: 1
@@ -89,39 +102,68 @@ input {
   background-color: #d8d8d8;
 }
 
-label {
-  margin: 0 0.5em;
-  font-weight: bold;
-}
-
-code {
-  background-color: #eee;
-  padding: 2px 4px;
-  border-radius: 4px;
-  color: #304455;
-}
-
-.counters table {
+.table {
+  display: table;         
   border-collapse: collapse;
   width: 80%;
   margin: 1em auto;
 }
 
-.counters tr {
+.thead { 
+  display: table-header-group;
+  background-color: #585858;
+  color: white;
+}
+
+.th {
+  display: table-cell;
+  padding: 5px;
+}
+
+.tbody {
+  display: table-row-group;
+}
+
+.tr {
+  display: table-row;
+  width: auto;
+  clear: both;
   background-color: #d8d8d8;
 }
-.counters tr:nth-child(odd) {
+
+ .tr:nth-child(odd) {
   background-color: #cccccc;
 }
 
-.counters tr.fading {
+ .tr.fading {
   background-color: rgb(255, 113, 113);
 }
- .counters tr.fading:nth-child(odd){
+  .tr.fading:nth-child(odd){
   background-color: rgb(255, 142, 142);
 }
+.td {
+  display: table-cell;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
 
-.counters td {
-  padding: 5px;
+.list-item {
+  transition: all 1s;
+}
+
+.list-enter-active {
+  transition: all 0.4s;
+}
+
+.list-enter-from {
+  transition: all 1s;
+  transform: translateX(-50px);
+  opacity: 0;
+}
+
+.list-enter,
+.list-leave-to {
+  opacity: 0;
+  transform: translateX(50px);
 }
 </style>
