@@ -19,11 +19,36 @@
        
         <datalist id="effects">
           <option value="+2 CA" />
+          
+          <option value="Prone" />
+          <option value="Grappled" />
+          <option value="Deafened" />
+          <option value="Blinded" />
+          <option value="Charmed" />
+          <option value="Frightened" />
+          <option value="Poisoned" />
+          <option value="Restrained" />
           <option value="Stunned" />
-          <option value="Hex" />
+          <option value="Incapacitated" />
+          <option value="Unconscious" />
+          <option value="Invisible" />
+          <option value="Paralyzed" />
+          <option value="Petrified" />
+
+          <option value="À terre" />
+          <option value="Agrippé" />
+          <option value="Assourdi" />
+          <option value="Aveuglé" />
+          <option value="Charmé" />
+          <option value="Effrayé" />
+          <option value="Empoisonné" />
+          <option value="Entravé" />
           <option value="Étourdi" />
-          <option value="Maléfice" />
-          <option value="Rage" />
+          <option value="Neutralisé" />
+          <option value="Inconscient" />
+          <option value="Invisible" />
+          <option value="Paralysé" />
+          <option value="Pétrifié" />
         </datalist>
       </form></div>
     <div>
