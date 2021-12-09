@@ -85,13 +85,22 @@ a {
 }
 
 button {
-  background-color: #999999;
+  background-color: #757575;
   color: white;
   border: none;
   padding: 5px 10px;
   border-radius: 5px;
   margin: 10px;
   cursor: pointer;
+  font-weight: bold;
+}
+
+button:hover {
+  background-color: #9e9e9e;
+}
+
+button:active {
+  transform: translateY(1px);
 }
 
 input {
@@ -111,8 +120,9 @@ input {
 
 .thead { 
   display: table-header-group;
-  background-color: #585858;
+  background-color: #2e2e2e;
   color: white;
+  font-weight: 900;
 }
 
 .th {
@@ -128,20 +138,23 @@ input {
   display: table-row;
   width: auto;
   clear: both;
-  background-color: #d8d8d8;
-
+  background-color: #505050;
   font-size: 1.25em;
 }
 
+.tr:hover {
+  border: 1px solid #ffffff;;
+}
+
  .tr:nth-child(odd) {
-  background-color: #cccccc;
+  background-color: #666666;
 }
 
  .tr.fading {
-  background-color: rgb(255, 177, 177);
+  background-color: rgb(112, 69, 69);
 }
   .tr.fading:nth-child(odd){
-  background-color: rgb(255, 158, 158);
+  background-color: rgb(156, 90, 90);
 }
 .td {
   display: table-cell;

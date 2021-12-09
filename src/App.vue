@@ -9,6 +9,10 @@ import HelloWorld from './components/HelloWorld.vue'
 </template>
 
 <style>
+html {
+  background-color: #363636;
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -16,5 +20,6 @@ import HelloWorld from './components/HelloWorld.vue'
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+  color: white;
 }
 </style>
