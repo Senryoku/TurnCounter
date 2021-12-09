@@ -37,7 +37,7 @@
           <div class="th">Effect</div>
           <div class="th">Duration</div>
         </div>
-        <transition-group name="list" class="tbody">
+        <transition-group tag="div" name="list" class="tbody">
           <div class="tr list-item" v-for="counter in counters" :key="counter.id" :class="{fading: counter.count == 1}">
             <div class="td">{{counter.character}}</div>
             <div class="td">{{counter.effect}}</div>
@@ -72,6 +72,11 @@ export default defineComponent({
       lastId: 0,
     };
   },
+  mounted() {
+    let counters = localStorage.getItem("counters");
+    if(counters)
+      this.counters = JSON.parse(counters);
+  },
   methods: {
     add() {
       this.counters.push(JSON.parse(JSON.stringify(this.newCounter)));
@@ -92,6 +97,14 @@ export default defineComponent({
     reset() {
       this.counters = [];
       this.turnCount = 1;
+    }
+  },
+  watch: {
+    counters: {
+      handler() {
+        localStorage.setItem("counters", JSON.stringify(this.counters));
+      },
+      deep: true
     }
   }
 });
