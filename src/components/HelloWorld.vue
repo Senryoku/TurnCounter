@@ -3,10 +3,28 @@
     <h1>Turn {{turnCount}}</h1>
     <div>
       <form @submit.prevent="add">
-        <input type="text" placeholder="Character" v-model="newCounter.character">
-        <input type="text" placeholder="Effect" v-model="newCounter.effect">
+        <input type="text" list="character-names" placeholder="Character" v-model="newCounter.character">
+        <input type="text" list="effects" placeholder="Effect" v-model="newCounter.effect">
         <input type="number" min="1" max="999" v-model="newCounter.count">
         <button type="submit">Add</button>
+
+        <datalist id="character-names">
+          <option value="Caho Lohcal" />
+          <option value="Brokk Grungsson" />
+          <option value="Gaeth Pernsec" />
+          <option value="Nemmonis Sheddinn" />
+          <option value="Vimak Ogolakanu" />
+          <option value="Boss" />
+        </datalist>
+       
+        <datalist id="effects">
+          <option value="+2 CA" />
+          <option value="Stunned" />
+          <option value="Hex" />
+          <option value="Étourdi" />
+          <option value="Maléfice" />
+          <option value="Rage" />
+        </datalist>
       </form></div>
     <div>
       <button @click="reset" style="background-color: red;">Reset</button>
