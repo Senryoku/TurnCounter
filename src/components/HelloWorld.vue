@@ -9,6 +9,7 @@
         <button type="submit">Add</button>
       </form></div>
     <div>
+      <button @click="reset" style="background-color: red;">Reset</button>
       <button @click="endTurn">End Turn</button>
     </div>
     <div class="counters">
@@ -56,8 +57,11 @@ export default defineComponent({
       }
       this.counters = this.counters.filter(counter => counter.count > 0);
       ++this.turnCount;
+    },
+    reset() {
+      this.counters = [];
+      this.turnCount = 1;
     }
-
   }
 });
 </script>
