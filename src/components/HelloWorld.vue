@@ -44,6 +44,11 @@ export default defineComponent({
   methods: {
     add() {
       this.counters.push(JSON.parse(JSON.stringify(this.newCounter)));
+      this.newCounter = {
+        character: '',
+        effect: '',
+        count: 1
+      };
     },
     endTurn() {
       for(let counter of this.counters) {
