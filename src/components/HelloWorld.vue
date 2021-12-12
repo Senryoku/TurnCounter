@@ -61,12 +61,14 @@
           <div class="th">Character</div>
           <div class="th">Effect</div>
           <div class="th">Duration</div>
+          <div class="th">Controls</div>
         </div>
         <transition-group tag="div" name="list" class="tbody">
-          <div class="tr list-item" v-for="counter in counters" :key="counter.id" :class="{fading: counter.count == 1}">
+          <div class="tr list-item" v-for="(counter, idx) in counters" :key="counter.id" :class="{fading: counter.count == 1}">
             <div class="td">{{counter.character}}</div>
             <div class="td">{{counter.effect}}</div>
             <div class="td">{{counter.count}}</div>
+            <div class="td"><span class="clickable" @click="remove(idx)">❌</span></div>
           </div>
         </transition-group>
       </div>
@@ -122,7 +124,10 @@ export default defineComponent({
     reset() {
       this.counters = [];
       this.turnCount = 1;
-    }
+    },
+    remove(index: number) {
+      this.counters.splice(index, 1);
+    },
   },
   watch: {
     counters: {
@@ -165,6 +170,10 @@ input {
   padding: 5px 10px;
   margin: 10px;
   background-color: #d8d8d8;
+}
+
+.clickable {
+  cursor: pointer;
 }
 
 .table {
